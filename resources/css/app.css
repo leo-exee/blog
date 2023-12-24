@@ -25,7 +25,6 @@ option {
     padding-left: 8px;
 }
 
-
 header h2 {
     text-align: center;
 }
@@ -46,7 +45,7 @@ input[type="color"] {
     padding: 0;
 }
 
-
 ::-moz-focus-inner {
     padding: 0;
 }
+

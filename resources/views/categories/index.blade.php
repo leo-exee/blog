@@ -13,7 +13,7 @@
                         'url' => route('categories.store'),
                     ])
                 </div>
-                @if ($categories->count() == 0)
+                @if ($categories->isEmpty())
                     <div class="mt-6 w-full text-center	">
                         <p class="font-semibold text-3xl text-gray-600 dark:text-gray-500 leading-tight">
                             Aucune categorie disponible

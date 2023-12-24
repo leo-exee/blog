@@ -8,6 +8,9 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
+    <script src="https://cdn.tiny.cloud/1/tqj0hm2881nuta57tb0vnciizr1ncsnw5nnawee9sc8ajpnl/tinymce/6/tinymce.min.js"
+        referrerpolicy="origin"></script>
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />

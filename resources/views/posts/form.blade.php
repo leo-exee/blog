@@ -35,9 +35,8 @@
 
         <div class="mb-4">
             <x-input-label for="tags">Tags</x-input-label>
-            <select id="tags" name="tags[]"
-                class="js-select2 overflow-hidden w-full"
-                multiple style="height:calc(36px * {{ $tags->count() }})">
+            <select id="tags" name="tags[]" class="js-select2 overflow-hidden w-full" multiple
+                style="height:calc(36px * {{ !$tags->isEmpty() }})">
                 @foreach ($tags as $tag)
                     <option data-badge="" value="{{ $tag->id }}"
                         {{ $post->tags->contains($tag) ? 'selected' : '' }} style="color: {{ $tag->color }}">
@@ -50,6 +49,6 @@
         <x-primary-button type="submit">Enregistrer</x-primary-button>
     </div>
     <div class="w-3/5 mr-6">
-        <textarea class="w-full rounded-lg" id="content" name="content" rows="50" required>{{ @old('content', $post->content) }}</textarea>
+        <textarea class="w-full rounded-lg" id="content" name="content" rows="50" required>{{ @old('content', $post->content) ?? ' ' }}</textarea>
     </div>
 </form>

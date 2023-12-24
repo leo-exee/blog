@@ -1,4 +1,17 @@
 <div class="sm:pl-6 lg:pl-8 py-12 w-2/3">
+    @if ($posts->isEmpty())
+        <div class="mt-6 w-full text-center	">
+            <p class="font-semibold text-3xl text-gray-600 dark:text-gray-500 leading-tight">
+                Vous n'avez pas encore écrit d'article :(
+            </p>
+            <a href="{{ route('posts.create') }}"
+                class="mt-4 text-xl text-gray-500 dark:text-gray-600 leading-tight underline">
+                Ecrire
+                votre première
+                article
+            </a>
+        </div>
+    @endif
     <div class="grid grid-cols-3 gap-4">
         @foreach ($posts as $post)
             <div

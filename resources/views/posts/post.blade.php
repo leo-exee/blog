@@ -27,7 +27,7 @@
 
         </div>
         <div class="w-full bg-rounded p-2 mt-0">
-            {{ $post->content }}
+            {!! $post->content !!}
         </div>
     </div>
 </x-app-layout>
