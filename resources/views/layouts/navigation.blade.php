@@ -9,30 +9,11 @@
                         <x-application-logo class="block h-9 w-auto fill-current text-gray-800 dark:text-gray-200" />
                     </a>
                 </div>
-
-                <!-- Navigation Links -->
-                {{-- <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link>
-                        {{ __('Dashboard') }}
-                    </x-nav-link>
-                </div> --}}
             </div>
 
             <!-- Settings Dropdown -->
             @if (Auth::check())
                 <div class="hidden sm:flex sm:items-center sm:ms-6">
-                    <x-nav-link
-                        class="inline-flex items-center px-3 py-1 text-sm leading-4 font-medium text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 transition ease-in-out duration-150"
-                        :href="route('posts.create')" :active="request()->routeIs('posts.create')">
-                        {{ __('Créer un article') }}
-                        <i class="fas fa-plus ml-1"></i>
-                    </x-nav-link>
-                    <x-nav-link
-                        class="inline-flex items-center px-3 py-1 text-sm leading-4 font-medium text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 transition ease-in-out duration-150"
-                        :href="route('profile.edit')" :active="request()->routeIs('profile.edit')">
-                        {{ __('Tableau de bord') }}
-                        <i class="fa-solid fa-table-cells-large ml-1"></i>
-                    </x-nav-link>
                     @if (Auth::user()->role == 'admin')
                         <x-nav-link
                             class="inline-flex items-center px-3 py-1 text-sm leading-4 font-medium text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 transition ease-in-out duration-150"
@@ -47,6 +28,18 @@
                             <i class="fa-solid fa-tag ml-1"></i>
                         </x-nav-link>
                     @endif
+                    <x-nav-link
+                        class="inline-flex items-center px-3 py-1 text-sm leading-4 font-medium text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 transition ease-in-out duration-150"
+                        :href="route('posts.create')" :active="request()->routeIs('posts.create')">
+                        {{ __('Créer un article') }}
+                        <i class="fas fa-plus ml-1"></i>
+                    </x-nav-link>
+                    <x-nav-link
+                        class="inline-flex items-center px-3 py-1 text-sm leading-4 font-medium text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 transition ease-in-out duration-150"
+                        :href="route('profile.edit')" :active="request()->routeIs('profile.edit')">
+                        {{ __('Tableau de bord') }}
+                        <i class="fa-solid fa-table-cells-large ml-1"></i>
+                    </x-nav-link>
                     <x-dropdown align="right" width="48">
                         <x-slot name="trigger">
                             <button
@@ -81,6 +74,7 @@
                     </x-nav-link>
                     <x-nav-link class="ml-2" :href="route('login')">
                         {{ __('Se connecter ') }}
+                        <i class="ml-1.5 fa-solid fa-right-to-bracket"></i>
                     </x-nav-link>
                 </div>
             @endif

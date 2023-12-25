@@ -27,7 +27,7 @@
                                             class="font-semibold">{{ $post->user->name }}</span></p>
                                     <div>
                                         @foreach ($post->tags as $tag)
-                                            <span class="px-1 py-0.5 rounded-lg text-xs font-bold"
+                                            <span class="px-1 py-0.5 rounded-lg text-xs font-bold text-white"
                                                 style="background: {{ $tag->color }};">{{ $tag->name }}</span>
                                         @endforeach
                                     </div>

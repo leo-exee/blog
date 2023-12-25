@@ -8,6 +8,12 @@
                 value="{{ @old('title', $category->name) }}" />
         </div>
 
+        @if (isset($category))
+            <div class="mt-2">
+                <p class="text-gray-500 dark:text-gray-400">Nombre d'article : {{ $category->posts->count() }}</p>
+            </div>
+        @endif
+
         <x-primary-button class="mt-4" type="submit">
             {{ isset($category) ? 'Modifier' : 'Ajouter' }}
         </x-primary-button>
