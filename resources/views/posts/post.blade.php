@@ -20,14 +20,14 @@
 
             <div>
                 @foreach ($post->tags as $tag)
-                    <span class="px-1 py-0.5 rounded-lg text-xs font-bold"
+                    <span class="px-1 py-0.5 rounded-lg text-xs font-bold text-white"
                         style="background: {{ $tag->color }};">{{ $tag->name }}</span>
                 @endforeach
             </div>
 
         </div>
-        <div class="w-full bg-rounded p-2 mt-0">
-            {{ $post->content }}
+        <div id="post" class="w-full bg-rounded p-2 mt-0">
+            {!! $post->content !!}
         </div>
     </div>
 </x-app-layout>

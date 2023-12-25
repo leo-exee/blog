@@ -8,6 +8,9 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
+    <script src="https://cdn.tiny.cloud/1/tqj0hm2881nuta57tb0vnciizr1ncsnw5nnawee9sc8ajpnl/tinymce/6/tinymce.min.js"
+        referrerpolicy="origin"></script>
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
@@ -30,16 +33,18 @@
 
 <body class="font-sans antialiased">
     @if (Session::has('error'))
-        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded absolute bottom-6 left-6"
-            role="alert">
+        <div class="notification bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded absolute bottom-6 left-6 flex items-center"
+            role="alert" style="font-size: 1.2rem">
             <span class="block font-semibold sm:inline">{{ Session::get('error') }}</span>
+            <i class="close fa-solid fa-xmark cursor-pointer ml-2"></i>
         </div>
     @endif
 
     @if (Session::has('success'))
-        <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded absolute bottom-6 left-6"
-            role="alert">
+        <div class="notification bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded absolute bottom-6 left-6 flex items-center"
+            role="alert" style="font-size: 1.2rem">
             <span class="block font-semibold sm:inline">{{ Session::get('success') }}</span>
+            <i class="close fa-solid fa-xmark cursor-pointer ml-2"></i>
         </div>
     @endif
 

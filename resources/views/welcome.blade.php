@@ -9,7 +9,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div>
                 <div class="py-6">
-                    @if ($posts->count() == 0)
+                    @if ($posts->isEmpty())
                         <div class="w-full text-center	">
                             <p class="font-semibold text-3xl text-gray-600 dark:text-gray-500 leading-tight">
                                 Aucun article n'a été publié pour le moment :(
@@ -27,7 +27,7 @@
                                             class="font-semibold">{{ $post->user->name }}</span></p>
                                     <div>
                                         @foreach ($post->tags as $tag)
-                                            <span class="px-1 py-0.5 rounded-lg text-xs font-bold"
+                                            <span class="px-1 py-0.5 rounded-lg text-xs font-bold text-white"
                                                 style="background: {{ $tag->color }};">{{ $tag->name }}</span>
                                         @endforeach
                                     </div>

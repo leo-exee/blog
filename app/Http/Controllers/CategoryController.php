@@ -63,7 +63,7 @@ class CategoryController extends Controller
         if(Auth::check() && Auth::user()->role == 'admin') {
 
             $posts = Post::where('category_id', $category->id)->get();
-            if($posts->count() > 0) {
+            if(!$posts->isEmpty()) {
                 $categories = Category::all();
                 return redirect()->route('categories.index', ['categories' => $categories])->with('error', 'La catégorie ne peut pas être supprimée car elle est utilisée par un ou plusieurs articles');
             }
