@@ -36,11 +36,7 @@ Avant de commencer, assurez-vous que vous avez les logiciels suivants installés
     Configuration
     ```
 
-5. Copiez le fichier .env.example et renommez-le en .env :
-
-    ```bash
-    cp .env.example .env
-    ```
+5. Copiez le fichier .env.example et renommez-le en .env (ATTENTION à bien modifier vos informations pour la votre base de données)
 
 ## Lancement du Serveur de Développement
 Lancez le serveur de développement Laravel avec la commande :
