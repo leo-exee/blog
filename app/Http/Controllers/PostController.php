@@ -10,6 +10,7 @@ use App\Models\Tag;
 use App\Models\User;
 
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -28,6 +29,13 @@ class PostController extends Controller
         $post = new Post();
         $post->title = $request->input('title');
         $post->content = $request->input('content');
+
+        if(isset($request->image)) {
+            $fileName = time() . '_' . $request->image->getClientOriginalName();
+            $request->image->storeAs('public/images', $fileName);
+            $post->image = $fileName;
+        }
+
         if(Category::find($request->input('category_id')) == null) {
             return redirect()->route('posts.create')->with('error', 'La catégorie n\'existe pas');
         }
@@ -60,6 +68,13 @@ class PostController extends Controller
         if(Auth::user() != $post->user && Auth::user()->role != 'admin') {
             return redirect()->route('index')->with('error', 'Vous ne pouvez pas modifier un article qui ne vous appartient pas');
         }
+
+        if(isset($request->image)) {
+            $fileName = time() . '_' . $request->image->getClientOriginalName();
+            $request->image->storeAs('public/images', $fileName);
+            $post->image = $fileName;
+        }
+
         $post->title = $request->input('title');
         $post->content = $request->input('content');
         if(Category::find($request->input('category_id')) == null) {

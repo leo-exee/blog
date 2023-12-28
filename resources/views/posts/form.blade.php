@@ -11,14 +11,17 @@
 
     <div class="mr-4 sm:px-6 lg:px-8 py-4 w-2/5 bg-white dark:bg-gray-800 shadow rounded-lg h-min sticky top-6">
         <div>
-            <x-input-label for="title">Titre</x-input-label>
+            <x-input-label for="title">Titre*</x-input-label>
             <x-text-input type="text" id="title" name="title" class="w-full" required
                 value="{{ @old('title', $post->title) }}" />
+            @error('title')
+                <p class="text-red-500">{{ $message }}</p>
+            @enderror
         </div>
 
 
         <div>
-            <x-input-label for="category_id">Categorie</x-input-label>
+            <x-input-label for="category_id">Categorie*</x-input-label>
             <select id="category_id" name="category_id"
                 class="w-full p-2 border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm"
                 required>
@@ -30,6 +33,9 @@
                         {{ $category->name }}</option>
                 @endforeach
             </select>
+            @error('category_id')
+                <p class="text-red-500">{{ $message }}</p>
+            @enderror
         </div>
 
 
@@ -44,6 +50,18 @@
                     </option>
                 @endforeach
             </select>
+            @error('tags')
+                <p class="text-red-500">{{ $message }}</p>
+            @enderror
+        </div>
+
+        <div class="mb-4">
+            <x-input-label for="image">{{ isset($post->id) ? "Remplacer l'image" : 'Image' }}</x-input-label>
+            <input type="file" id="image" name="image"
+                class="w-full p-2 border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm" />
+            @error('image')
+                <p class="text-red-500">{{ $message }}</p>
+            @enderror
         </div>
 
         <x-primary-button type="submit">Enregistrer</x-primary-button>

@@ -78,3 +78,12 @@ input[type="color"] {
     font-weight: bold;
 }
 
+.no-picture {
+    opacity: 0.2;
+}
+
+@media (prefers-color-scheme: dark) {
+    .no-picture {
+        filter: invert(1);
+    }
+}

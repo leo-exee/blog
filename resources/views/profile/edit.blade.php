@@ -11,6 +11,16 @@
                 <div class="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg">
                     <div class="max-w-xl">
                         @include('profile.partials.update-profile-information-form')
+
+                        <form class="mt-4" method="POST" action="{{ route('logout') }}">
+                            @csrf
+
+                            <x-danger-button :href="route('logout')"
+                                onclick="event.preventDefault();
+                                                this.closest('form').submit();">
+                                {{ __('Me déconnecter') }} <i class="fas fa-sign-out-alt ml-1"></i>
+                            </x-danger-button>
+                        </form>
                     </div>
                 </div>
 

@@ -14,6 +14,14 @@
                 value="{{ @old('title', $tag->color) }}" />
         </div>
 
+        @if (isset($tag))
+            <p class="text-gray-500 dark:text-gray-400">Date de création : <span
+                    class="font-semibold">{{ $tag->created_at->format('d/m/Y') }}</span></p>
+            <p class="text-gray-500 dark:text-gray-400">Date de mise à jour : <span class="font-semibold">
+                    {{ $tag->updated_at->format('d/m/Y') }}</span></p>
+            <p class="text-gray-500 dark:text-gray-400">Nombre d'articles liés : <span
+                    class="font-semibold">{{ $tag->posts->count() }}</span></p>
+        @endif
 
         <x-primary-button class="mt-4" type="submit">
             {{ isset($tag) ? 'Modifier' : 'Ajouter' }}
@@ -21,7 +29,7 @@
     </form>
 
     @if (isset($tag))
-        <form id="delete-tag-form" action="{{ route('categories.destroy', $tag->id) }}" method="POST">
+        <form id="delete-tag-form" action="{{ route('tags.destroy', $tag->id) }}" method="POST">
             @csrf
             @method('DELETE')
             <x-danger-button class="mt-4">

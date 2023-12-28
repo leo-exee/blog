@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\TagController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 use App\Models\Post;
@@ -57,6 +58,11 @@ Route::prefix('/tags')->name('tags.')->group(function () {
     Route::post('/', [TagController::class, 'store'])->middleware(['auth', 'verified'])->name('store');
     Route::put('/{tag}', [TagController::class, 'update'])->middleware(['auth', 'verified'])->name('update');
     Route::delete('/{tag}', [TagController::class, 'destroy'])->middleware(['auth', 'verified'])->name('destroy');
+});
+
+Route::prefix('/users')->name('users.')->group(function () {
+    Route::get('/', [UserController::class, 'index'])->middleware(['auth', 'verified'])->name('index');
+    Route::delete('/{user}', [UserController::class, 'destroy'])->middleware(['auth', 'verified'])->name('destroy');
 });
 
 require __DIR__.'/auth.php';

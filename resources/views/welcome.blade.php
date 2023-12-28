@@ -16,28 +16,42 @@
                             </p>
                         </div>
                     @else
-                        <div class="grid grid-cols-4 gap-4">
-                            @foreach ($posts as $post)
+                        <div class="flex flex-col space-y-4">
+                            @foreach ($posts->reverse() as $post)
                                 <div
-                                    class="p-6 text-gray-900 dark:text-gray-100 bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg space-y-2">
-                                    <h2 class="text-2xl font-bold">{{ $post->title }}</h2>
-                                    <p class="text-gray-500 dark:text-gray-400">Categorie : <span
-                                            class="font-semibold">{{ $post->category->name }}</span></p>
-                                    <p class="text-gray-500 dark:text-gray-400">Autheur : <span
-                                            class="font-semibold">{{ $post->user->name }}</span></p>
-                                    <div>
-                                        @foreach ($post->tags as $tag)
-                                            <span class="px-1 py-0.5 rounded-lg text-xs font-bold text-white"
-                                                style="background: {{ $tag->color }};">{{ $tag->name }}</span>
-                                        @endforeach
-                                    </div>
-                                    <p class="text-gray-500 dark:text-gray-400">{{ $post->created_at->format('d/m/Y') }}
-                                    </p>
-                                    <div class="flex w-full justify-end">
-                                        <a href="{{ route('posts.show', $post->id) }}"
-                                            class="text-blue-500 dark:text-blue-400">Voir l'article <i
-                                                class="fa-solid fa-angle-right"></i>
-                                        </a>
+                                    class="h-64 flex bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg text-gray-900 dark:text-gray-100">
+                                    @if ($post->image)
+                                        <img class="w-1/3 object-cover"
+                                            src="{{ asset('storage/images/' . $post->image) }}">
+                                    @else
+                                        <img class="w-1/3 px-24 py-4 object-contain no-picture"
+                                            src="{{ asset('assets/no-image.png') }}">
+                                    @endif
+                                    <div class="w-2/3 flex flex-col place-content-between p-6 ">
+                                        <div>
+                                            <h2 class="text-2xl font-bold">{{ $post->title }}</h2>
+                                            <p class="text-gray-500 dark:text-gray-400">Categorie : <span
+                                                    class="font-semibold">{{ $post->category->name }}</span></p>
+                                            <p class="text-gray-500 dark:text-gray-400">Autheur : <span
+                                                    class="font-semibold">{{ $post->user->name ?? 'inconnu' }}</span>
+                                            </p>
+                                            <p class="text-gray-500 dark:text-gray-400">Date de publication : <span
+                                                    class="font-semibold">{{ $post->created_at->format('d/m/Y') }}</span>
+                                            </p>
+                                            <div>
+                                                @foreach ($post->tags as $tag)
+                                                    <span
+                                                        class="inline-flex px-1 py-0.5 rounded-lg text-xs font-bold text-white"
+                                                        style="background: {{ $tag->color }};">{{ $tag->name }}</span>
+                                                @endforeach
+                                            </div>
+                                        </div>
+                                        <div class="flex w-full justify-end">
+                                            <a href="{{ route('posts.show', $post->id) }}"
+                                                class="text-blue-500 dark:text-blue-400">Voir l'article <i
+                                                    class="fa-solid fa-angle-right"></i>
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
                             @endforeach
