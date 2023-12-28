@@ -22,6 +22,9 @@ class UserController extends Controller
 
     public function destroy(User $user)
     {
+        if(Auth::user()->id == $user->id) {            
+            return redirect()->route('users.index')->with('error', 'Vous ne pouvez pas supprimer votre compte sur cette page');
+        }
         if(Auth::check() && Auth::user()->role == 'admin') {
             $user->delete();
             $users = User::all();

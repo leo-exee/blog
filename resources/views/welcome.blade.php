@@ -5,10 +5,10 @@
         </h2>
     </x-slot>
 
-    <div class="py-12">
+    <div class="py-4">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div>
-                <div class="py-6">
+                <div class="py-4">
                     @if ($posts->isEmpty())
                         <div class="w-full text-center	">
                             <p class="font-semibold text-3xl text-gray-600 dark:text-gray-500 leading-tight">
@@ -29,7 +29,8 @@
                                     @endif
                                     <div class="w-2/3 flex flex-col place-content-between p-6 ">
                                         <div>
-                                            <h2 class="text-2xl font-bold">{{ $post->title }}</h2>
+                                            <a href="{{ route('posts.show', $post->id) }}"
+                                                class="text-2xl font-semibold underline">{{ $post->title }} </a>
                                             <p class="text-gray-500 dark:text-gray-400">Categorie : <span
                                                     class="font-semibold">{{ $post->category->name }}</span></p>
                                             <p class="text-gray-500 dark:text-gray-400">Autheur : <span
@@ -39,17 +40,27 @@
                                                     class="font-semibold">{{ $post->created_at->format('d/m/Y') }}</span>
                                             </p>
                                             <div>
-                                                @foreach ($post->tags as $tag)
+                                                @php $maxTags = 5; @endphp
+
+                                                @foreach ($post->tags->take($maxTags) as $tag)
                                                     <span
                                                         class="inline-flex px-1 py-0.5 rounded-lg text-xs font-bold text-white"
                                                         style="background: {{ $tag->color }};">{{ $tag->name }}</span>
                                                 @endforeach
+
+                                                @if ($post->tags->count() > $maxTags)
+                                                    <span
+                                                        class="inline-flex px-1 py-0.5 rounded-lg text-xs font-bold text-black dark:text-white bg-gray-100 dark:bg-gray-900">
+                                                        +{{ $post->tags->count() - $maxTags }}
+                                                    </span>
+                                                @endif
                                             </div>
                                         </div>
                                         <div class="flex w-full justify-end">
-                                            <a href="{{ route('posts.show', $post->id) }}"
-                                                class="text-blue-500 dark:text-blue-400">Voir l'article <i
-                                                    class="fa-solid fa-angle-right"></i>
+                                            <a class="mt-4 inline-flex items-center px-4 py-2 bg-gray-800 dark:bg-gray-200 border border-transparent rounded-md font-semibold text-xs text-white dark:text-gray-800 uppercase tracking-widest hover:bg-gray-700 dark:hover:bg-white focus:bg-gray-700 dark:focus:bg-white active:bg-gray-900 dark:active:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 transition ease-in-out duration-150"
+                                                href="{{ route('posts.show', $post->id) }}">
+                                                Lire l'article
+                                                <i class="ml-1 fa-solid fa-angle-right"></i>
                                             </a>
                                         </div>
                                     </div>

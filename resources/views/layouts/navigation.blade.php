@@ -1,6 +1,6 @@
-<nav x-data="{ open: false }" class="bg-white dark:bg-gray-800 border-b border-gray-100 dark:border-gray-700">
+<nav x-data="{ open: false }" class="fixed py-4 z-10 flex justify-center w-full">
     <!-- Primary Navigation Menu -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-sm px-4 sm:px-6 lg:px-8 w-full max-w-7xl">
         <div class="flex justify-between h-16">
             <div class="flex">
                 <!-- Logo -->
@@ -12,13 +12,14 @@
             </div>
 
             <div class="flex space-x-8">
+
+                <x-nav-link
+                    class="inline-flex items-center px-3 py-1 text-sm leading-4 font-medium text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 transition ease-in-out duration-150"
+                    :href="route('index')" :active="request()->routeIs('index')">
+                    <i class="fa-solid fa-home mr-1"></i>
+                    {{ __('Accueil') }}
+                </x-nav-link>
                 @if (Auth::check())
-                    <x-nav-link
-                        class="inline-flex items-center px-3 py-1 text-sm leading-4 font-medium text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 transition ease-in-out duration-150"
-                        :href="route('index')" :active="request()->routeIs('index')">
-                        <i class="fa-solid fa-home mr-1"></i>
-                        {{ __('Accueil') }}
-                    </x-nav-link>
                     @if (Auth::user()->role == 'admin')
                         <x-nav-link
                             class="inline-flex items-center px-3 py-1 text-sm leading-4 font-medium text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 transition ease-in-out duration-150"
@@ -52,14 +53,12 @@
                         {{ __('Tableau de bord') }}
                     </x-nav-link>
                 @else
-                    <x-nav-link :href="route('index')" :active="request()->routeIs('index')">
-                        {{ __('Accueil') }}
-                    </x-nav-link>
                     <x-nav-link :href="route('register')">
+                        <i class="mr-1.5 fa-solid fa-user-plus"></i>
                         {{ __('S\'inscrire') }}
                     </x-nav-link>
                     <x-nav-link class="ml-2" :href="route('login')">
-                        <i class="mr-1.5 fa-solid fa-right-to-bracket"></i>
+                        <i class="mr-1.5 fa-solid fa-sign-in"></i>
                         {{ __('Se connecter ') }}
                     </x-nav-link>
                 @endif

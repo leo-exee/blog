@@ -14,7 +14,8 @@
                         class="font-semibold">{{ $category->created_at->format('d/m/Y') }}</span></p>
                 <p class="text-gray-500 dark:text-gray-400">Date de mise à jour : <span class="font-semibold">
                         {{ $category->updated_at->format('d/m/Y') }}</span></p>
-                <p class="text-gray-500 dark:text-gray-400">Nombre d'articles liés : {{ $category->posts->count() }}</p>
+                <p class="text-gray-500 dark:text-gray-400">Nombre d'articles liés : <span
+                        class="font-semibold">{{ $category->posts->count() }}</span></p>
             </div>
         @endif
 
