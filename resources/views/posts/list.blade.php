@@ -14,11 +14,12 @@
     @endif
     <div class="grid grid-cols-2 gap-4">
         @foreach ($posts as $post)
-            <div class="bg-white dark:bg-gray-800 shadow rounded-lg h-96">
+            <div class="bg-white dark:bg-gray-800 shadow rounded-xl h-96">
                 @if ($post->image)
-                    <img class="w-full rounded h-2/5 object-cover" src="{{ asset('storage/images/' . $post->image) }}">
+                    <img class="w-full rounded-t-xl h-2/5 object-cover"
+                        src="{{ asset('storage/images/' . $post->image) }}">
                 @else
-                    <img class="w-full rounded h-2/5 object-contain no-picture px-32"
+                    <img class="w-full rounded-t-xl h-2/5 object-contain no-picture px-32"
                         src="{{ asset('assets/no-image.png') }}">
                 @endif
 
