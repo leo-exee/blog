@@ -31,11 +31,18 @@
                                         <div>
                                             <a href="{{ route('posts.show', $post->id) }}"
                                                 class="text-2xl font-semibold underline">{{ $post->title }} </a>
-                                            <p class="text-gray-500 dark:text-gray-400">Categorie : <span
-                                                    class="font-semibold">{{ $post->category->name }}</span></p>
-                                            <p class="text-gray-500 dark:text-gray-400">Autheur : <span
-                                                    class="font-semibold">{{ $post->user->name ?? 'inconnu' }}</span>
+                                            <p class="text-gray-500 dark:text-gray-400">Categorie : <a
+                                                    href="{{ route('categories.posts', $post->category->id) }}"
+                                                    class="font-semibold underline">{{ $post->category->name }}</a>
                                             </p>
+                                            @if ($post->user)
+                                                <p class="text-gray-500 dark:text-gray-400">Autheur : <a
+                                                        href="{{ route('users.posts', $post->user->id) }}"
+                                                        class="font-semibold underline">{{ $post->user->name }}</a></p>
+                                            @else
+                                                <p class="text-gray-500 dark:text-gray-400">Autheur : <span
+                                                        class="font-semibold">inconnu</span></p>
+                                            @endif
                                             <p class="text-gray-500 dark:text-gray-400">Date de publication : <span
                                                     class="font-semibold">{{ $post->created_at->format('d/m/Y') }}</span>
                                             </p>
@@ -43,9 +50,9 @@
                                                 @php $maxTags = 5; @endphp
 
                                                 @foreach ($post->tags->take($maxTags) as $tag)
-                                                    <span
+                                                    <a href="{{ route('tags.posts', $tag->id) }}"
                                                         class="inline-flex px-1 py-0.5 rounded-lg text-xs font-bold text-white"
-                                                        style="background: {{ $tag->color }};">{{ $tag->name }}</span>
+                                                        style="background: {{ $tag->color }};">{{ $tag->name }}</a>
                                                 @endforeach
 
                                                 @if ($post->tags->count() > $maxTags)

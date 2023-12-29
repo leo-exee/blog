@@ -25,30 +25,34 @@
                 <div class="sm:px-6 lg:px-8 py-4 flex flex-col place-content-between h-3/5">
                     <div class="text-gray-800 dark:text-gray-200">
                         <div>
-                            <p class="text-2xl font-bold">{{ $post->title }}</p>
+                            <a href="{{ route('posts.show', $post->id) }}"
+                                class="text-2xl underline font-bold">{{ $post->title }}</a>
                         </div>
 
 
-                        <div>
-                            <p>Categorie : <span class="font-semibold">{{ $post->category->name }}</span></p>
-                        </div>
+                        <p class="text-gray-500 dark:text-gray-400">Categorie : <a
+                                href="{{ route('categories.posts', $post->category->id) }}"
+                                class="font-semibold underline">{{ $post->category->name }}</a>
+                        </p>
+                        @if ($post->user)
+                            <p class="text-gray-500 dark:text-gray-400">Autheur : <a
+                                    href="{{ route('users.posts', $post->user->id) }}"
+                                    class="font-semibold underline">{{ $post->user->name }}</a></p>
+                        @else
+                            <p class="text-gray-500 dark:text-gray-400">Autheur : <span
+                                    class="font-semibold">inconnu</span></p>
+                        @endif
 
-                        <div>
-                            <p>Autheur : <span class="font-semibold">{{ $post->user->name }}</span></p>
-                        </div>
-
-                        <div>
-                            <p>Date de publication : <span
-                                    class="font-semibold">{{ $post->created_at->format('d/m/Y') }}</span>
-                            </p>
-                        </div>
+                        <p class="text-gray-500 dark:text-gray-400">Date de publication : <span
+                                class="font-semibold">{{ $post->created_at->format('d/m/Y') }}</span>
 
                         <div class="mt-2">
                             @php $maxTags = 3; @endphp
 
                             @foreach ($post->tags->take($maxTags) as $tag)
-                                <span class="inline-flex px-1 py-0.5 rounded-lg text-xs font-bold text-white"
-                                    style="background: {{ $tag->color }};">{{ $tag->name }}</span>
+                                <a href="{{ route('tags.posts', $tag->id) }}"
+                                    class="inline-flex px-1 py-0.5 rounded-lg text-xs font-bold text-white"
+                                    style="background: {{ $tag->color }};">{{ $tag->name }}</a>
                             @endforeach
 
                             @if ($post->tags->count() > $maxTags)

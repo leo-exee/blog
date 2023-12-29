@@ -32,4 +32,11 @@ class UserController extends Controller
         }
         return redirect()->route('index')->with('error', 'Vous n\'avez pas les droits pour accéder à cette page');
     }
+
+    public function posts(User $user)
+    {
+        $posts = Post::where('user_id', $user->id)->get();
+        
+        return view('posts.filtered', ['filter' => $user->name, 'posts' => $posts]);
+    }
 }

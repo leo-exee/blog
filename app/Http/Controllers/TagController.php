@@ -67,4 +67,12 @@ class TagController extends Controller
         }
         return redirect()->route('index')->with('error', 'Vous n\'avez pas les droits pour accéder à cette page');
     }
+
+    public function posts(Tag $tag)
+    {
+        $posts = Post::whereHas('tags', function($q) use ($tag) {
+            $q->where('tag_id', $tag->id);
+        })->get();
+        return view('posts.filtered', ['filter' => $tag->name, 'posts' => $posts]);
+    }
 }

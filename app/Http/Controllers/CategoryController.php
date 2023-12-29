@@ -74,4 +74,10 @@ class CategoryController extends Controller
         }
         return redirect()->route('index')->with('error', 'Vous n\'avez pas les droits pour accéder à cette page');
     }
+
+    public function posts(Category $category)
+    {
+        $posts = Post::where('category_id', $category->id)->get();
+        return view('posts.filtered', ['filter' => $category->name, 'posts' => $posts]);
+    }
 }
