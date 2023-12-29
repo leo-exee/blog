@@ -52,7 +52,7 @@ Route::prefix('/categories')->name('categories.')->group(function () {
     Route::put('/{category}', [CategoryController::class, 'update'])->middleware(['auth', 'verified'])->name('update');
     Route::delete('/{category}', [CategoryController::class, 'destroy'])->middleware(['auth', 'verified'])->name('destroy');
 
-    Route::get('/{category}/posts', [CategoryController::class, 'posts'])->middleware(['auth', 'verified'])->name('posts');
+    Route::get('/{category}/posts', [CategoryController::class, 'posts'])->name('posts');
 });
 
 Route::prefix('/tags')->name('tags.')->group(function () {
@@ -61,14 +61,14 @@ Route::prefix('/tags')->name('tags.')->group(function () {
     Route::put('/{tag}', [TagController::class, 'update'])->middleware(['auth', 'verified'])->name('update');
     Route::delete('/{tag}', [TagController::class, 'destroy'])->middleware(['auth', 'verified'])->name('destroy');
 
-    Route::get('/{tag}/posts', [TagController::class, 'posts'])->middleware(['auth', 'verified'])->name('posts');
+    Route::get('/{tag}/posts', [TagController::class, 'posts'])->name('posts');
 });
 
 Route::prefix('/users')->name('users.')->group(function () {
     Route::get('/', [UserController::class, 'index'])->middleware(['auth', 'verified'])->name('index');
     Route::delete('/{user}', [UserController::class, 'destroy'])->middleware(['auth', 'verified'])->name('destroy');
 
-    Route::get('/{user}/posts', [UserController::class, 'posts'])->middleware(['auth', 'verified'])->name('posts');
+    Route::get('/{user}/posts', [UserController::class, 'posts'])->name('posts');
 });
 
 require __DIR__.'/auth.php';
