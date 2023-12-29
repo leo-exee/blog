@@ -32,8 +32,9 @@
 </head>
 
 <body class="font-sans antialiased">
+
     @if (Session::has('error'))
-        <div class="notification bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded absolute bottom-6 left-6 flex items-center"
+        <div class="notification bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded bottom-6 left-6 flex items-center fixed"
             role="alert" style="font-size: 1.2rem">
             <span class="block font-semibold sm:inline">{{ Session::get('error') }}</span>
             <i class="close fa-solid fa-xmark cursor-pointer ml-2"></i>
@@ -41,7 +42,7 @@
     @endif
 
     @if (Session::has('success'))
-        <div class="notification bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded absolute bottom-6 left-6 flex items-center"
+        <div class="notification bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded bottom-6 left-6 flex items-center fixed"
             role="alert" style="font-size: 1.2rem">
             <span class="block font-semibold sm:inline">{{ Session::get('success') }}</span>
             <i class="close fa-solid fa-xmark cursor-pointer ml-2"></i>
@@ -53,8 +54,8 @@
 
         <!-- Page Heading -->
         @if (isset($header))
-            <header class="bg-white dark:bg-gray-800 shadow">
-                <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+            <header class="pt-28 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+                <div class="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8 bg-white dark:bg-gray-800 rounded-xl shadow-sm">
                     {{ $header }}
                 </div>
             </header>

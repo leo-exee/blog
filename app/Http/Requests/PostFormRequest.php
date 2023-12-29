@@ -27,6 +27,28 @@ class PostFormRequest extends FormRequest
             'content' => 'required|min:3',
             'category_id' => 'required|exists:categories,id',
             'tags' => 'array',
+            'image' => 'image|mimes:jpeg,png,jpg,svg'
+        ];
+    }
+
+    /**
+     * Get the error messages for the defined validation rules.
+     *
+     * @return array<string, string>
+     */
+    public function messages(): array   
+    {
+        return [
+            'title.required' => 'Le titre est obligatoire',
+            'title.min' => 'Le titre doit faire au moins 3 caractères',
+            'title.max' => 'Le titre ne doit pas dépasser 255 caractères',
+            'content.required' => 'Le contenu est obligatoire',
+            'content.min' => 'Le contenu doit faire au moins 3 caractères',
+            'category_id.required' => 'La catégorie est obligatoire',
+            'category_id.exists' => 'La catégorie n\'existe pas',
+            'tags.array' => 'Les tags doivent être un tableau',
+            'image.image' => 'L\'image doit être une image',
+            'image.mimes' => 'L\'image doit être au format jpeg, png, jpg ou svg',
         ];
     }
 }

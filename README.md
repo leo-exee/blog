@@ -33,10 +33,23 @@ Avant de commencer, assurez-vous que vous avez les logiciels suivants installés
 
     ```bash
     npm install
-    Configuration
     ```
 
 5. Copiez le fichier .env.example et renommez-le en .env (ATTENTION à bien modifier vos informations pour la votre base de données)
+
+## Initialisation de la base de données et du stockage
+
+1. Effectuez les migrations afin de mettre en place votre base de données :
+
+    ```bash
+    php artisan migrate
+    ```
+
+2. Connectez votre stockage afin de pouvoir récupérer les fichiers :
+
+    ```bash
+    php artisan storage:link
+    ```
 
 ## Lancement du Serveur de Développement
 Lancez le serveur de développement Laravel avec la commande :
