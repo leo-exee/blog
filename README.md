@@ -1,12 +1,14 @@
-# Nom du Projet
+# Le blog de LP
 
-Description concise du projet.
+Le blog de LP est un projet laravel de...blog (surprenant) permettant à l'utilisateur de publié des articles, avec des catégories, tags, etc.
+
+Lors du premier démarrage, pensez à bien définir un utilisateur en tant qu'administrateur afin de créer des catégories/tags (sans celles-ci, vous ne pourrez pas créer d'articles).
 
 ## Prérequis
 
 Avant de commencer, assurez-vous que vous avez les logiciels suivants installés sur votre machine :
 
-- [PHP](https://www.php.net/) (version recommandée)
+- [PHP](https://www.php.net/) (version 8)
 - [Composer](https://getcomposer.org/)
 - [Node.js](https://nodejs.org/) et [npm](https://www.npmjs.com/)
 - [Git](https://git-scm.com/)
@@ -50,6 +52,8 @@ Avant de commencer, assurez-vous que vous avez les logiciels suivants installés
     ```bash
     php artisan storage:link
     ```
+
+3. Si ça n'est pas déjà le cas, vérifiez que la valeur `upload_max_filesize` dans le fichier `php.ini` est au moins initialisé à 10M.
 
 ## Lancement du Serveur de Développement
 Lancez le serveur de développement Laravel avec la commande :
