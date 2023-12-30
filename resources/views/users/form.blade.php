@@ -1,5 +1,5 @@
 <div
-    class="text-gray-800 dark:text-gray-200 py-4 px-6 w-full bg-white dark:bg-gray-800 shadow rounded-lg h-min sticky top-6">
+    class="text-gray-800 dark:text-gray-200 py-4 px-6 w-full bg-white dark:bg-gray-800 shadow rounded-lg h-full flex flex-col justify-between">
     <div>
         <p class="text-gray-500 dark:text-gray-400">Nom : <span class="font-semibold">{{ $user->name }}</span></p>
         <p class="text-gray-500 dark:text-gray-400">Email : <span class="font-semibold">{{ $user->email }}</span></p>

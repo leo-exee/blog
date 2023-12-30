@@ -7,30 +7,24 @@
 
     <div class="py-4">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div>
-                <div>
-                    @include('categories/form', [
-                        'url' => route('categories.store'),
-                    ])
+            @include('categories/form', [
+                'url' => route('categories.store'),
+            ])
+            @if ($categories->isEmpty())
+                <div class="mt-4 w-full text-center	">
+                    <p class="font-semibold text-3xl text-gray-600 dark:text-gray-500 leading-tight">
+                        Aucune categorie disponible
+                    </p>
                 </div>
-                @if ($categories->isEmpty())
-                    <div class="mt-6 w-full text-center	">
-                        <p class="font-semibold text-3xl text-gray-600 dark:text-gray-500 leading-tight">
-                            Aucune categorie disponible
-                        </p>
-                    </div>
-                @else
-                    <div class="mt-6 grid grid-cols-4 gap-4">
-                        @foreach ($categories as $category)
-                            <div>
-                                @include('categories/form', [
-                                    'url' => route('categories.update', $category->id),
-                                ])
-                            </div>
-                        @endforeach
-                    </div>
-                @endif
-            </div>
+            @else
+                <div class="mt-4 grid grid-cols-4 gap-4">
+                    @foreach ($categories as $category)
+                        @include('categories/form', [
+                            'url' => route('categories.update', $category->id),
+                        ])
+                    @endforeach
+                </div>
+            @endif
         </div>
     </div>
 </x-app-layout>
