@@ -21,11 +21,20 @@ class PostController extends Controller
 
     public function create()
     {
+        if(Category::all()->count() == 0) {
+            return redirect()->route('categories.create')->with('error', 'La création d\'un article nécessite au moins qu\'une catégorie soit créée');
+        }
+        if(Tag::all()->count() == 0) {
+            return redirect()->route('tags.create')->with('error', 'La création d\'un article nécessite au moins qu\'un tag soit créé');
+        }
         return view('posts/add', ['post' => new Post(), 'categories' => Category::all(), 'tags' => Tag::all()]);
     }
 
     public function store(PostFormRequest $request)
     {
+        if(!Auth::user()){
+            return redirect()->route('index')->with('error', 'Vous devez être connecté pour créer un article');
+        }
         $post = new Post();
         $post->title = $request->input('title');
         $post->content = $request->input('content');
