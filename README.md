@@ -37,6 +37,8 @@ Avant de commencer, assurez-vous que vous avez les logiciels suivants installés
     npm install
     ```
 
+    Il se peut que vous ayez des problèmes avec tailwind : si cela venait à ce produire, reinstallez tailwind dans le projet (https://tailwindcss.com/docs/guides/laravel).
+
 5. Copiez le fichier .env.example et renommez-le en .env (ATTENTION à bien modifier vos informations pour la votre base de données)
 
 ## Initialisation de la base de données et du stockage
