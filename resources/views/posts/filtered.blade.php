@@ -7,16 +7,10 @@
 
     <div class="sm:px-6 lg:px-8 py-4 w-full max-w-7xl mx-auto">
         @if ($posts->isEmpty())
-            <div class="mt-6 w-full text-center	">
+            <div class="mt-4 w-full text-center	">
                 <p class="font-semibold text-3xl text-gray-600 dark:text-gray-500 leading-tight">
                     Aucun article disponible :(
                 </p>
-                <a href="{{ route('posts.create') }}"
-                    class="mt-4 text-xl text-gray-500 dark:text-gray-600 leading-tight underline">
-                    Ecrire
-                    votre première
-                    article
-                </a>
             </div>
         @endif
         <div class="grid grid-cols-3 gap-4">

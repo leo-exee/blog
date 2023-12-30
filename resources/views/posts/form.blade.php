@@ -9,7 +9,7 @@
     @csrf
     @method($post->id ? 'PUT' : 'POST')
 
-    <div class="mr-4 sm:px-6 lg:px-8 py-4 w-2/5 bg-white dark:bg-gray-800 shadow rounded-lg h-min sticky top-24">
+    <div class="mr-4 sm:px-6 lg:px-8 w-2/5 bg-white dark:bg-gray-800 shadow rounded-lg h-min sticky top-24">
         <div>
             <x-input-label for="title">Titre*</x-input-label>
             <x-text-input type="text" id="title" name="title" class="w-full" required

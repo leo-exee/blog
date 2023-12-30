@@ -5,25 +5,21 @@
         </h2>
     </x-slot>
 
-    <div class="py-4">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div>
-                @if ($users->isEmpty())
-                    <div class="mt-6 w-full text-center	">
-                        <p class="font-semibold text-3xl text-gray-600 dark:text-gray-500 leading-tight">
-                            Aucun utilisateurs
-                        </p>
-                    </div>
-                @else
-                    <div class="mt-6 grid grid-cols-4 gap-4">
-                        @foreach ($users as $user)
-                            <div>
-                                @include('users/form', ['user' => $user])
-                            </div>
-                        @endforeach
-                    </div>
-                @endif
-            </div>
+    <div class="py-4 max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <div>
+            @if ($users->isEmpty())
+                <div class="mt-4 w-full text-center	">
+                    <p class="font-semibold text-3xl text-gray-600 dark:text-gray-500 leading-tight">
+                        Aucun utilisateurs
+                    </p>
+                </div>
+            @else
+                <div class="grid grid-cols-4 gap-4">
+                    @foreach ($users as $user)
+                        @include('users/form', ['user' => $user])
+                    @endforeach
+                </div>
+            @endif
         </div>
     </div>
 </x-app-layout>
